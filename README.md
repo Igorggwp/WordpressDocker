@@ -2,15 +2,14 @@
 
 ## Descrição
 
-Este projeto configura um ambiente web utilizando Docker Compose, incluindo os seguintes serviços:
-- **WordPress**: Plataforma de criação e gestão de conteúdo.
+Este projeto configura um ambiente web utilizando Docker Compose, utilizando:
+- **WordPress**: Plataforma de criação de conteudo.
 - **Redis**: Banco de dados em memória utilizado para cache.
-- **Prometheus**: Sistema de monitoramento e alertas.
+- **Prometheus**: Sistema de monitoramento.
 
 ## Pré-requisitos
 
-- [Docker](https://www.docker.com/get-started)
-- [Docker Compose](https://docs.docker.com/compose/install/)
+Docker e Docker compose
 
 ## Instruções de Instalação
 
@@ -22,7 +21,7 @@ Este projeto configura um ambiente web utilizando Docker Compose, incluindo os s
 
 2. Configure o Docker Daemon:
     - Encontre e edite o arquivo `daemon.json`:
-        - **Linux**: O arquivo está localizado em `/etc/docker/daemon.json`
+        - O arquivo está localizado em `/etc/docker/daemon.json`
       ```json
       {
         "builder": {
@@ -54,32 +53,14 @@ Este projeto configura um ambiente web utilizando Docker Compose, incluindo os s
 
 ### Instalando Plugins no WordPress
 
-1. Acesse o painel de administração do WordPress em `http://localhost:8000/wp-admin`.
+1. Acesse o painel de administração do WordPress.
 2. Faça login com as credenciais configuradas durante a instalação.
 3. No menu lateral, vá para **Plugins** > **Adicionar novo**.
-4. Pesquise pelo plugin que deseja instalar.
+4. Pesquise pelo plugin **Redis Object Cache**.
 5. Clique em **Instalar agora** e, em seguida, em **Ativar**.
 
 ### Monitorando com Prometheus
 
 - Abra o navegador e vá para `http://localhost:9090`.
 
-## Configuração dos Serviços
-
-### WordPress
-
-O WordPress é configurado com as seguintes variáveis de ambiente:
-
-- `WORDPRESS_DB_HOST`: Nome do host do banco de dados.
-- `WORDPRESS_DB_USER`: Usuário do banco de dados.
-- `WORDPRESS_DB_PASSWORD`: Senha do banco de dados.
-- `WORDPRESS_DB_NAME`: Nome do banco de dados.
-
-### Redis
-
-O Redis é utilizado como serviço de cache e está acessível na porta `6379`.
-
-### Prometheus
-
-O Prometheus está configurado para monitorar os serviços e está acessível na porta `9090`.
-
+Com esses serviços integrados o sistema esta pronto para utilizar!
