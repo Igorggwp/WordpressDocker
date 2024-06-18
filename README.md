@@ -21,7 +21,7 @@ Docker e Docker compose
 
 2. Configure o Docker Daemon:
     - Encontre e edite o arquivo `daemon.json`:
-        - O arquivo está localizado em `/etc/docker/daemon.json`
+        - O arquivo está localizado em `/etc/docker/daemon.json`, ou, .docker no diretório do seu usuário.
       ```json
       {
         "builder": {
