@@ -1,0 +1,60 @@
+services:
+  wordpress:
+    image: wordpress:latest
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress_password
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./wp:/var/www/html
+    networks:
+      - ambienteweb
+
+  db:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - ambienteweb
+
+  redis:
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+    restart: unless-stopped
+    expose:
+      - '6379'
+    volumes:
+      - redis_data:/data
+    networks:
+      - ambienteweb
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - ambienteweb
+
+volumes:
+  db_data:
+  redis_data:
+
+networks:
+  ambienteweb:
+    driver: bridge   
