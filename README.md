@@ -23,9 +23,6 @@ Este projeto configura um ambiente web utilizando Docker Compose, incluindo os s
 2. Configure o Docker Daemon:
     - Encontre e edite o arquivo `daemon.json`:
         - **Linux**: O arquivo está localizado em `/etc/docker/daemon.json`
-        - **Windows**: O arquivo está localizado em `C:\ProgramData\Docker\config\daemon.json`
-        - **macOS**: O arquivo está localizado em `~/Library/Group Containers/group.com.docker/daemon.json`
-    - Se o arquivo não existir, crie-o e adicione a seguinte configuração:
       ```json
       {
         "builder": {
